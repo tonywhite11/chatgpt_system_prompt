@@ -16,13 +16,13 @@ jobs:
   update-tokens:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
         with:
           python-version: '3.12'
 
-      - uses: qwibitai/nanoclaw/repo-tokens@v1.2.0
+      - uses: nanocoai/nanoclaw/repo-tokens@0210aa9ef169401aa5c8d85e002c2e8976f69253 # v1.2.0
         id: tokens
         with:
           include: 'prompts/**/*.md prompts/**/*.txt README.md TOC.md GETTING_STARTED.md SECURITY.md CONTRIBUTING.md RESOURCES.md'
