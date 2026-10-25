@@ -5,31 +5,26 @@ name: Generate TOC on PR Merge or Push
 # It ensures that the table of contents stays up-to-date without manual intervention.
 
 on:
-  # Trigger on PR merge
-  pull_request_target:
-    types:
-      - closed
-    branches:
-      - main
-  # Trigger on direct pushes to main branch
+  # Pull-request merges already produce a push to main.
   push:
     branches:
       - main
 
+permissions:
+  contents: write
+
 jobs:
   build_toc:
-    # Only run on PR merge or direct push to main
-    if: github.event_name == 'push' || (github.event_name == 'pull_request_target' && github.event.pull_request.merged == true)
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
           # Fetch all history for allowing proper git operations
           fetch-depth: 0
 
       - name: Set up Python 3
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
         with:
           python-version: '3.x'
 
